@@ -22,7 +22,7 @@ io.on('connection', (socket)=> {
 socket.on('createMessage' ,(message,callback)=> {
   console.log('createMessage',message);
   io.emit('newMessage', generateMessage(message.from,message.text));
-  callback('this is from the server');
+  callback();
 // socket.broadcast.emit('newMessage', {
 //     from:message.from,
 //     text:message.text,
@@ -32,7 +32,7 @@ socket.on('createMessage' ,(message,callback)=> {
 
 socket.on('createLocationMessage',(coords)=> {
   io.emit('newLocationMessage',generateLocationMessage('Kavya',`${coords.latitude},${coords.longitude}`));
-})
+});
 socket.on('disconnect', ()=> {
   console.log('user was disconnected');
 });
